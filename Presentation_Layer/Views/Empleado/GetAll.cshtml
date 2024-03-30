@@ -1,0 +1,63 @@
+﻿@model Model_Layer.Empleado
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+}
+
+<div class="container">
+    <section>
+        <h2>Empleados</h2>
+    </section>
+    <section>
+        <div class="row">
+
+            <div style="float:left;">
+                @Html.ActionLink("Agregar", "Form", "Empleado", htmlAttributes: new { @class = "btn btn-success bi bi-person-plus-fill" })
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+        @if (Model.Empleados == null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.Message
+            </div>
+        }
+        <div class="overflow-auto">
+            <table id="dtHorizontalVerticalExample" class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <td class="text-center" style=" font-weight:bold;">Editar</td>
+
+                        <td class="visually-hidden">IdEmpleado</td>
+
+                        <td class="text-center" style="font-weight:bold;">Nombre completo</td>
+                        <td class="text-center" style="font-weight:bold;">Area</td>
+                        <td class="text-center" style="font-weight:bold;">Fecha de Nacimiento</td>
+                        <td class="text-center" style="font-weight:bold;">Sueldo</td>
+
+                        <td class="text-center" style=" font-weight:bold;">Eliminar</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (Model_Layer.Empleado empleado in Model.Empleados)
+                    {
+                        <tr>
+                            <td class="text-center"><a class="btn btn-warning bi bi-pencil-square" href="@Url.Action("Form", "Empleado", new { idEmpleado = empleado.IdEmpleado})"></a></td>
+                            <td class="visually-hidden">@empleado.IdEmpleado</td>
+                            <td class="text-center">@empleado.Nombre @empleado.ApellidoPaterno @empleado.ApellidoMaterno</td>
+                            <td class="text-center">@empleado.Area</td>
+                            <td class="text-center">@empleado.FechaNacimiento</td>
+                            <td class="text-center">@empleado.Sueldo</td>
+                            <td class="text-center"><a class="btn btn-danger bi bi-trash" href="@Url.Action("Delete", "Empleado", new { idEmpleado = empleado.IdEmpleado})" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>

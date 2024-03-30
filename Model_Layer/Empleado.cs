@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-
-namespace DataAccess_Layer
+namespace Model_Layer
 {
-    public partial class Empleado
-    {
+	public class Empleado
+	{
         public int IdEmpleado { get; set; }
 
         public string Nombre { get; set; } = null!;
@@ -15,8 +13,10 @@ namespace DataAccess_Layer
 
         public string Area { get; set; } = null!;
 
-        public DateTime? FechaNacimiento { get; set; }
+        public string? FechaNacimiento { get; set; }
 
         public string Sueldo { get; set; } = null!;
+
+        public List<object>? Empleados { get; set; }
     }
 }

@@ -1,0 +1,83 @@
+﻿@model Model_Layer.Empleado
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+}
+
+<div class="container">
+    <h2>Formulario Empleado</h2>
+    <div class="col-md-12">
+        @using (Html.BeginForm("Form", "Empleado", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="col">
+                @Html.LabelFor(model => model.IdEmpleado, new { @class = "visually-hidden" })
+
+                @Html.TextBoxFor(model => model.IdEmpleado, new { @class = "visually-hidden form-control" })
+
+                @Html.ValidationMessageFor(model => model.IdEmpleado, null, new { @class = "text-danger" })
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.Nombre)
+
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.Nombre, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="col">
+                    @Html.LabelFor(model => model.ApellidoPaterno)
+
+                    @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.ApellidoPaterno, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="col">
+                    @Html.LabelFor(model => model.ApellidoMaterno)
+
+                    @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.ApellidoMaterno, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.Area)
+
+                    @Html.TextBoxFor(model => model.Area, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.Area, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="col">
+                    @Html.LabelFor(model => model.FechaNacimiento)
+
+                    @Html.TextBoxFor(model => model.FechaNacimiento, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.FechaNacimiento, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="col">
+                    @Html.LabelFor(model => model.Sueldo)
+
+                    @Html.TextBoxFor(model => model.Sueldo, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.Sueldo, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center">
+                    <input type="submit" value="Guardar" class="btn btn-success " />
+
+                    @Html.ActionLink("Regresar", "GetAll", "Empleado", htmlAttributes: new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        }
+    </div>
+</div>
